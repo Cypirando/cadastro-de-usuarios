@@ -21,6 +21,7 @@ const Formulario = () => {
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
+        defaultValue={"+55"}
         style={{
           width: 70,
         }}
@@ -36,7 +37,9 @@ const Formulario = () => {
     email: Yup.string()
       .email("E-mail inválido!")
       .required("Por favor digite o Nome E-mail!"),
-    cpf: Yup.string().matches(/^\d{11}$/, 'CPF inválido').required("Por favor digite seu CPF"),
+    cpf: Yup.string()
+      .matches(/^\d{11}$/, "CPF inválido")
+      .required("Por favor digite seu CPF"),
     cor: Yup.string().required("Por favor escolha uma cor do seu gosto!"),
     estadoCivil: Yup.string().required("Por favor digite seu Estado Civil!"),
     genero: Yup.string().required("Por favor digite seu Genero!"),
@@ -57,9 +60,22 @@ const Formulario = () => {
     genero: "",
     dataNacimento: "",
     phone: "",
-    phone2: ""
+    phone2: "",
   });
-  console.log(setUser)
+  const listaGenero = [
+    { id: 1, name: "Masculino" },
+    { id: 2, name: "Feminino" },
+    { id: 3, name: "Transgenero" },
+    { id: 4, name: "Outro" },
+  ];
+  const listaEstadoCivil = [
+    { id: 1, name: "Solteiro(a)" },
+    { id: 2, name: "Casado(a)" },
+    { id: 3, name: "Divorciado(a)" },
+    { id: 4, name: "Viúvo(a)" },
+    { id: 5, name: "União estável" },
+  ];
+  console.log(setUser);
 
   const onSubmit = (values) => {
     console.log(values);
@@ -89,7 +105,11 @@ const Formulario = () => {
               help={errors.sobrenome}
               validateStatus={errors.sobrenome ? "error" : ""}
             >
-              <Input name="sobrenome" onChange={handleChange} value={values.sobrenome} />
+              <Input
+                name="sobrenome"
+                onChange={handleChange}
+                value={values.sobrenome}
+              />
             </Form.Item>
 
             <Form.Item
@@ -98,7 +118,11 @@ const Formulario = () => {
               help={errors.email}
               validateStatus={errors.email ? "error" : ""}
             >
-              <Input name="email" onChange={handleChange} value={values.email} />
+              <Input
+                name="email"
+                onChange={handleChange}
+                value={values.email}
+              />
             </Form.Item>
 
             <Form.Item
@@ -131,10 +155,14 @@ const Formulario = () => {
               help={errors.estadoCivil}
               validateStatus={errors.estadoCivil ? "error" : ""}
             >
-              <Select name="estadoCivil" onChange={handleChange} value={values.estadoCivil}>
-                <Option value="solteiro">Solteiro</Option>
-                <Option value="casado">Casado</Option>
-                <Option value="viuvo">Viúvo</Option>
+              <Select
+                name="estadoCivil"
+                onChange={(value) => handleChange({target: {name: "estadoCivil", value}})}
+                value={values.estadoCivil}
+              >
+                {listaEstadoCivil.map((item, index) => (
+                  <Option value={item.id}>{item.name}</Option>
+                ))}
               </Select>
             </Form.Item>
 
@@ -144,10 +172,13 @@ const Formulario = () => {
               help={errors.genero}
               validateStatus={errors.genero ? "error" : ""}
             >
-              <Select name="genero" onChange={handleChange} value={values.genero}>
-                <Option value="masculino">Maculino</Option>
-                <Option value="feminino">Feminino</Option>
-                <Option value="outro">Outro</Option>
+              <Select
+                name="genero"
+                onChange={(value) => handleChange({target: {name: "genero", value}})}
+                value={values.genero}
+              >{listaGenero.map((item, index) => (
+                <Option value={item.id}>{item.name}</Option>
+              ))}
               </Select>
             </Form.Item>
 
@@ -159,12 +190,14 @@ const Formulario = () => {
             >
               <DatePicker
                 name="dataNacimento"
-                onChange={(date, dateString) => handleChange({target: {name: "dataNacimento", value: dateString}})}
+                onChange={(date, dateString) =>
+                  handleChange({
+                    target: { name: "dataNacimento", value: dateString },
+                  })
+                }
                 value={values.dataNacimento}
               />
             </Form.Item>
-
-
 
             <Form.Item
               name="phone"
