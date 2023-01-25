@@ -2,6 +2,7 @@ import { Button, DatePicker, Form, Input, Select } from "antd";
 import "./Formulario.css";
 import * as Yup from "yup";
 import { Formik } from "formik";
+import { useState } from "react";
 const { Option } = Select;
 
 const tailFormItemLayout = {
@@ -46,18 +47,20 @@ const Formulario = () => {
     phone2: Yup.string(),
   });
 
-  const initialValues = {
-    nome: "João",
-    sobrenome: "Silva",
-    email: "joao.silva@email.com",
-    cpf: "123.456.789-00",
-    cor: "#000000",
-    estadoCivil: "solteiro",
-    genero: "masculino",
-    dataNacimento: "01/01/2000",
-    phone: "11 99999-9999",
-    phone2: "11 98888-8888"
-    }
+  const [user, setUser] = useState({
+    nome: "",
+    sobrenome: "",
+    email: "",
+    cpf: "",
+    cor: "",
+    estadoCivil: "",
+    genero: "",
+    dataNacimento: "",
+    phone: "",
+    phone2: ""
+  });
+  console.log(setUser)
+
   const onSubmit = (values) => {
     console.log(values);
     // Your logic here
@@ -66,7 +69,7 @@ const Formulario = () => {
   return (
     <div className="App">
       <Formik
-        initialValues={initialValues}
+        initialValues={user}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
@@ -156,10 +159,12 @@ const Formulario = () => {
             >
               <DatePicker
                 name="dataNacimento"
-                onChange={handleChange}
+                onChange={(date, dateString) => handleChange({target: {name: "dataNacimento", value: dateString}})}
                 value={values.dataNacimento}
               />
             </Form.Item>
+
+
 
             <Form.Item
               name="phone"
