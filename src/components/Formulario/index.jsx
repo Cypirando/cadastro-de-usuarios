@@ -1,13 +1,9 @@
 import { Button, DatePicker, Form, Input, Select } from "antd";
-import cpf_cnpj from "cpf_cnpj";
 import "./Formulario.css";
 import * as Yup from "yup";
 import { Formik } from "formik";
 const { Option } = Select;
-const isValidCPF = (value) => {
-  if (!cpf_cnpj.validate(value)) return false;
-  return true;
-};
+
 const tailFormItemLayout = {
   wrapperCol: {
     xs: {
@@ -39,9 +35,7 @@ const Formulario = () => {
     email: Yup.string()
       .email("E-mail inválido!")
       .required("Por favor digite o Nome E-mail!"),
-    cpf: Yup.string()
-      .test("cpf", "CPF inválido", isValidCPF)
-      .required("Por favor digite seu CPF"),
+    cpf: Yup.string().matches(/^\d{11}$/, 'CPF inválido').required("Por favor digite seu CPF"),
     cor: Yup.string().required("Por favor escolha uma cor do seu gosto!"),
     estadoCivil: Yup.string().required("Por favor digite seu Estado Civil!"),
     genero: Yup.string().required("Por favor digite seu Genero!"),
@@ -62,8 +56,8 @@ const Formulario = () => {
     genero: "masculino",
     dataNacimento: "01/01/2000",
     phone: "11 99999-9999",
-    phone2: "11 98888-8888",
-  };
+    phone2: "11 98888-8888"
+    }
   const onSubmit = (values) => {
     console.log(values);
     // Your logic here
@@ -84,12 +78,7 @@ const Formulario = () => {
               help={errors.nome}
               validateStatus={errors.nome ? "error" : ""}
             >
-              <Input
-                
-                name="nome"
-                onChange={handleChange}
-                value={values.nome}
-              />
+              <Input name="nome" onChange={handleChange} value={values.nome} />
             </Form.Item>
             <Form.Item
               name="sobrenome"
@@ -97,12 +86,7 @@ const Formulario = () => {
               help={errors.sobrenome}
               validateStatus={errors.sobrenome ? "error" : ""}
             >
-              <Input
-                
-                name="sobrenome"
-                onChange={handleChange}
-                value={values.sobrenome}
-              />
+              <Input name="sobrenome" onChange={handleChange} value={values.sobrenome} />
             </Form.Item>
 
             <Form.Item
@@ -111,12 +95,7 @@ const Formulario = () => {
               help={errors.email}
               validateStatus={errors.email ? "error" : ""}
             >
-              <Input
-                
-                name="email"
-                onChange={handleChange}
-                value={values.email}
-              />
+              <Input name="email" onChange={handleChange} value={values.email} />
             </Form.Item>
 
             <Form.Item
@@ -125,12 +104,7 @@ const Formulario = () => {
               help={errors.cpf}
               validateStatus={errors.cpf ? "error" : ""}
             >
-              <Input
-                
-                name="cpf"
-                onChange={handleChange}
-                value={values.cpf}
-              />
+              <Input name="cpf" onChange={handleChange} value={values.cpf} />
             </Form.Item>
 
             <Form.Item
@@ -140,7 +114,6 @@ const Formulario = () => {
               validateStatus={errors.cor ? "error" : ""}
             >
               <Input
-                
                 type="color"
                 className="imput-cor"
                 name="cor"
@@ -155,12 +128,7 @@ const Formulario = () => {
               help={errors.estadoCivil}
               validateStatus={errors.estadoCivil ? "error" : ""}
             >
-              <Select
-                
-                name="estadoCivil"
-                onChange={handleChange}
-                value={values.estadoCivil}
-              >
+              <Select name="estadoCivil" onChange={handleChange} value={values.estadoCivil}>
                 <Option value="solteiro">Solteiro</Option>
                 <Option value="casado">Casado</Option>
                 <Option value="viuvo">Viúvo</Option>
@@ -173,12 +141,7 @@ const Formulario = () => {
               help={errors.genero}
               validateStatus={errors.genero ? "error" : ""}
             >
-              <Select
-                
-                name="genero"
-                onChange={handleChange}
-                value={values.genero}
-              >
+              <Select name="genero" onChange={handleChange} value={values.genero}>
                 <Option value="masculino">Maculino</Option>
                 <Option value="feminino">Feminino</Option>
                 <Option value="outro">Outro</Option>
@@ -192,7 +155,6 @@ const Formulario = () => {
               validateStatus={errors.dataNacimento ? "error" : ""}
             >
               <DatePicker
-                
                 name="dataNacimento"
                 onChange={handleChange}
                 value={values.dataNacimento}
@@ -206,7 +168,6 @@ const Formulario = () => {
               validateStatus={errors.phone ? "error" : ""}
             >
               <Input
-                
                 addonBefore={prefixSelector}
                 name="phone"
                 onChange={handleChange}
@@ -221,7 +182,6 @@ const Formulario = () => {
               validateStatus={errors.phone2 ? "error" : ""}
             >
               <Input
-                
                 addonBefore={prefixSelector}
                 name="phone2"
                 onChange={handleChange}
