@@ -1,13 +1,19 @@
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Inicio from "./pages/Inicio";
+import Interesses from "./pages/Interesses";
+import Resumo from "./pages/Resumo";
 
-function App() {
+function AppRoutes() {
   return (
-    <div className="App">
-      <header className="App-header">
-       
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/interesses" element={<Interesses />} />
+        <Route path="/resumo" element={<Resumo />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App;
+export default AppRoutes;
