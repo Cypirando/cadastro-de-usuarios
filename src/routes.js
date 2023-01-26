@@ -1,16 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Inicio from "./pages/Inicio";
-import Interesses from "./pages/Interesses";
-import Resumo from "./pages/Resumo";
+import Stepers from "./components/Stepers";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/interesses" element={<Interesses />} />
-        <Route path="/resumo" element={<Resumo />} />
+        <Route path="/" element={<Stepers />} />
       </Routes>
     </BrowserRouter>
   );

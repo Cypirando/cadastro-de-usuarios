@@ -1,3 +1,8 @@
-.form-inicio{
-    display: grid;
+.App{
+    display: flex;
+    justify-content: center;
+}
+
+.imput-cor{
+    width: 60px;
 }
