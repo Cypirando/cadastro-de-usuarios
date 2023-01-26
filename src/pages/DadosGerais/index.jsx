@@ -1,5 +1,5 @@
-import { Button, DatePicker, Form, Input, Select } from "antd";
-import "./Inicio.css";
+import {  Button, DatePicker, Form, Input, Select } from "antd";
+import "./DadosGerais.css";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { useState } from "react";
@@ -17,7 +17,7 @@ const tailFormItemLayout = {
     },
   },
 };
-const Inicio = () => {
+const DadosGerais = () => {
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
@@ -62,6 +62,10 @@ const Inicio = () => {
     phone: "",
     phone2: "",
   });
+ const handleNomeChange = (e) => {
+    setUser({...user, nome: e.target.value});
+    }
+    console.log(handleNomeChange)
   const listaGenero = [
     { id: 1, name: "Masculino" },
     { id: 2, name: "Feminino" },
@@ -226,16 +230,16 @@ const Inicio = () => {
                 value={values.phone2}
               />
             </Form.Item>
-
+{/* 
             <Form.Item {...tailFormItemLayout}>
               <Button type="primary" htmlType="submit">
                 Register
               </Button>
-            </Form.Item>
+            </Form.Item> */}
           </form>
         )}
       </Formik>
     </div>
   );
 };
-export default Inicio;
+export default DadosGerais;

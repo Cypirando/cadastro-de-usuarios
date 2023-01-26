@@ -4,11 +4,15 @@ import Stepers from "./components/Stepers";
 
 function AppRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Stepers />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <header>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Stepers />} />
+          </Routes>
+        </BrowserRouter>
+      </header>
+    </div>
   );
 }
 
