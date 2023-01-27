@@ -1,4 +1,4 @@
-import { Descriptions } from "antd";
+import { Descriptions, Space, Tag } from "antd";
 import "./Resumo.css";
 // import { Table } from "antd";
 
@@ -6,70 +6,10 @@ const Resumo = ({ formik, user }) => {
   const dataSource = formik.values;
   console.log(dataSource, "datasource");
 
-  // const columns = [
-  //   {
-  //     title: "Nome",
-  //     dataIndex: "nome",
-  //     key: "nome",
-  //   },
-  //   {
-  //     title: "Sobrenome",
-  //     dataIndex: "sobrenome",
-  //     key: "sobrenome",
-  //   },
-  //   {
-  //     title: "Email",
-  //     dataIndex: "email",
-  //     key: "email",
-  //   },
-  //   {
-  //     title: "CPF",
-  //     dataIndex: "cpf",
-  //     key: "cpf",
-  //   },
-  //   {
-  //     title: "Cor",
-  //     dataIndex: "cor",
-  //   },
-  //   {
-  //     key: "cor",
-  //   },
-  //   {
-  //     title: "Estado Civil",
-  //     dataIndex: "estadoCivil",
-  //     key: "estadoCivil",
-  //   },
-  //   {
-  //     title: "Gênero",
-  //     dataIndex: "genero",
-  //     key: "genero",
-  //   },
-  //   {
-  //     title: "Data de Nascimento",
-  //     dataIndex: "dataNacimento",
-  //     key: "dataNacimento",
-  //   },
-  //   {
-  //     title: "Telefone",
-  //     dataIndex: "phone",
-  //     key: "phone",
-  //   },
-  //   {
-  //     title: "Telefone 2",
-  //     dataIndex: "phone2",
-  //     key: "phone2",
-  //   },
-  //   {
-  //     title: "Hobbies",
-  //     dataIndex: "hobbies",
-  //     key: "hobbies",
-  //   },
-  // ];
-
   return (
-    <div className="form-resumo">
+    <div>
       <div>
-        <Descriptions title="User Info">
+        <Descriptions title="Informações do Usuario">
           <Descriptions.Item label="Nome Completo">
             {dataSource.nome} {dataSource.sobrenome}
           </Descriptions.Item>
@@ -95,6 +35,9 @@ const Resumo = ({ formik, user }) => {
           <Descriptions.Item label="Hobbies">
             {dataSource.hobbies.join(", ")}
           </Descriptions.Item>
+          <Space size={[0, 8]} wrap>
+            <Tag color={dataSource.cor}>Cor</Tag>
+          </Space>
         </Descriptions>
       </div>
     </div>

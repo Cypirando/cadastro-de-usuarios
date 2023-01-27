@@ -105,6 +105,7 @@ const App = () => {
       >
         {current < steps.length - 1 && (
           <Button
+          // disabled={!formik.isValid || formik.isSubmitting}
             type="primary"
             onClick={() => {
               formik.handleSubmit();

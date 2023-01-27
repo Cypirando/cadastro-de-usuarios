@@ -55,7 +55,6 @@ const DadosGerais = ({ formik }) => {
             defaultValue={formik.values.sobrenome}
             name="sobrenome"
             onChange={formik.handleChange}
-            value={formik.values.sobrenome}
           />
         </Form.Item>
 
