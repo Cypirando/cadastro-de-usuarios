@@ -23,4 +23,4 @@ const Resumo = () => {
   );
 };
 
-export default Resumo;
+export default Resumo ;
