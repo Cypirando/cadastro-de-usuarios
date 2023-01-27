@@ -90,6 +90,8 @@ const App = () => {
     marginTop: 16,
   };
   const Component = steps[current].content;
+  console.log(formik.values, "Formik");
+
   return (
     <>
       <Steps current={current} items={items} user={user} />

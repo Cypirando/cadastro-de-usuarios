@@ -26,7 +26,6 @@ const DadosGerais = ({ formik }) => {
     { id: 4, name: "Viúvo(a)" },
     { id: 5, name: "União estável" },
   ];
-  console.log(formik.values, "Formik");
   return (
     <div className="App">
       <form onSubmit={formik.handleSubmit} key={formik.values}>
