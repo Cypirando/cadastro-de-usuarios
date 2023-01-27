@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useFormik } from "formik";
-import Atributos from "../../components/Atributos/Atributos";
+// import Atributos from "../../components/Atributos/Atributos";
 
 import DadosGerais from "../../pages/DadosGerais";
 import Interesses from "../../pages/Interesses";
@@ -29,8 +29,7 @@ const App = () => {
     phone: Yup.string().required("Por favor digite seu numero!"),
     phone2: Yup.string(),
   });
-  // const hobies = Atributos.map((item) => console.log(item.group))
-  console.log(Atributos, "Atributos");
+
   const [user, setUser] = useState({
     nome: "",
     sobrenome: "",
@@ -42,13 +41,8 @@ const App = () => {
     dataNacimento: "",
     phone: "",
     phone2: "",
-    hobbies: Object.values(Atributos).map((item) =>
-      item.children.map((child) => ({
-        label: child,
-        checked: false,
-      }))
-    ),
   });
+
   const formik = useFormik({
     validationSchema: schema,
     validateOnBlur: true,

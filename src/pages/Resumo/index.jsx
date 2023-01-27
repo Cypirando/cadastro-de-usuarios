@@ -1,9 +1,9 @@
 import "./Resumo.css";
 
-const Resumo = () => {
+const Resumo = ({formik}) => {
   return (
     <div className="form-resumo">
-      {/* <table>
+      <table>
         <thead>
           <tr>
             <th>Campo</th>
@@ -11,14 +11,9 @@ const Resumo = () => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(user).map((key) => (
-            <tr key={key}>
-              <td>{key}</td>
-              <td>{user[key]}</td>
-            </tr>
-          ))}
+          {formik.values.nome}
         </tbody>
-      </table> */}
+      </table>
     </div>
   );
 };

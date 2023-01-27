@@ -26,14 +26,20 @@ const estiloDeVida = [
   { id: 25, name: "Aviação", group: "Transporte e Mobilidade" },
 ];
 
-const Atributos =  estiloDeVida.reduce((acc, interesse) => {
-    if (!acc[interesse.group]) {
-      acc[interesse.group] = { group: interesse.group, children: [] };
-    }
-    acc[interesse.group].children.push(interesse.name);
-    return acc;
+// const Atributos =  estiloDeVida.reduce((acc, interesse) => {
+//     if (!acc[interesse.group]) {
+//       acc[interesse.group] = { group: interesse.group, children: [] };
+//     }
+//     acc[interesse.group].children.push(interesse.name);
+//     return acc;
+//   }, {});
+const Atributos = estiloDeVida.reduce((acc, interesse) => {
+  if (!acc[interesse.group]) {
+  acc[interesse.group] = { group: interesse.group, children: [] };
+  }
+  acc[interesse.group].children.push({ label: interesse.name, checked: false });
+  return acc;
   }, {});
-
 
 
 
