@@ -26,7 +26,7 @@ const DadosGerais = ({ formik }) => {
     { id: 4, name: "Viúvo(a)" },
     { id: 5, name: "União estável" },
   ];
-
+  console.log(formik.values, "Formik");
   return (
     <div className="App">
       <form onSubmit={formik.handleSubmit} key={formik.values}>
@@ -38,7 +38,11 @@ const DadosGerais = ({ formik }) => {
           validateStatus={formik.errors.nome ? "error" : ""}
           initialValue={formik.values.nome}
         >
-          <Input name="nome" onChange={formik.handleChange} />
+          <Input
+            defaultValue={formik.values.nome}
+            name="nome"
+            onChange={formik.handleChange}
+          />
         </Form.Item>
         <Form.Item
           key={formik.errors.sobrenome}
@@ -49,6 +53,7 @@ const DadosGerais = ({ formik }) => {
           initialValue={formik.values.nome}
         >
           <Input
+            defaultValue={formik.values.sobrenome}
             name="sobrenome"
             onChange={formik.handleChange}
             value={formik.values.sobrenome}
@@ -63,7 +68,11 @@ const DadosGerais = ({ formik }) => {
           validateStatus={formik.errors.email ? "error" : ""}
           initialValue={formik.values.email}
         >
-          <Input name="email" onChange={formik.handleChange} />
+          <Input
+            defaultValue={formik.values.email}
+            name="email"
+            onChange={formik.handleChange}
+          />
         </Form.Item>
 
         <Form.Item
@@ -74,7 +83,11 @@ const DadosGerais = ({ formik }) => {
           validateStatus={formik.errors.cpf ? "error" : ""}
           initialValue={formik.values.cpf}
         >
-          <Input name="cpf" onChange={formik.handleChange} />
+          <Input
+            defaultValue={formik.values.cpf}
+            name="cpf"
+            onChange={formik.handleChange}
+          />
         </Form.Item>
 
         <Form.Item
@@ -90,6 +103,7 @@ const DadosGerais = ({ formik }) => {
             className="imput-cor"
             name="cor"
             onChange={formik.handleChange}
+            defaultValue={formik.values.cor}
           />
         </Form.Item>
 
@@ -102,6 +116,7 @@ const DadosGerais = ({ formik }) => {
           initialValue={formik.values.estadoCivil}
         >
           <Select
+          defaultValue={formik.values.genero}
             name="estadoCivil"
             onChange={(value) =>
               formik.handleChange({
@@ -111,7 +126,9 @@ const DadosGerais = ({ formik }) => {
             onBlur={formik.handleBlur}
           >
             {listaEstadoCivil.map((item, index) => (
-              <Option value={item.id}>{item.name}</Option>
+              <Option key={index} value={item.id}>
+                {item.name}
+              </Option>
             ))}
           </Select>
         </Form.Item>
@@ -126,6 +143,7 @@ const DadosGerais = ({ formik }) => {
           initialValue={formik.values.genero}
         >
           <Select
+          defaultValue={formik.values.genero}
             name="genero"
             onChange={(value) =>
               formik.handleChange({ target: { name: "genero", value } })
@@ -133,7 +151,9 @@ const DadosGerais = ({ formik }) => {
             onBlur={formik.handleBlur}
           >
             {listaGenero.map((item, index) => (
-              <Option value={item.id}>{item.name}</Option>
+              <Option key={index} value={item.id}>
+                {item.name}
+              </Option>
             ))}
           </Select>
         </Form.Item>
@@ -165,6 +185,7 @@ const DadosGerais = ({ formik }) => {
           initialValue={formik.values.phone}
         >
           <Input
+            defaultValue={formik.values.phone}
             addonBefore={prefixSelector}
             name="phone"
             onChange={formik.handleChange}
@@ -180,6 +201,7 @@ const DadosGerais = ({ formik }) => {
           initialValue={formik.values.phone2}
         >
           <Input
+            defaultValue={formik.values.phone2}
             addonBefore={prefixSelector}
             name="phone2"
             onChange={formik.handleChange}

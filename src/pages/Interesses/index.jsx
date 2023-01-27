@@ -27,8 +27,9 @@ const Interesses = () => {
       render: (children) => (
         
         <>
-          {children.map((child) => (
+          {children.map((child, index) => (
             <Checkbox
+            key={index}
               name={child}
               onChange={handleCheckboxChange}
               checked={selectedInteresses.includes(child)}
