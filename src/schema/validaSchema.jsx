@@ -2,16 +2,16 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 
 const validationSchema = Yup.object().shape({
-  nome: Yup.string().required("Por favor digite o Nome"),
-  sobrenome: Yup.string().required("Por favor digite o Sobrenome"),
+  name: Yup.string().required("Por favor digite o Nome"),
+  lastName: Yup.string().required("Por favor digite o Sobrenome"),
   email: Yup.string()
     .email("E-mail inválido!")
     .required("Por favor digite o Nome E-mail!"),
   cpf: Yup.string().required("Por favor digite seu CPF"),
-  cor: Yup.string().required("Por favor escolha uma cor do seu gosto!"),
-  estadoCivil: Yup.string().required("Por favor digite seu Estado Civil!"),
-  genero: Yup.string().required("Por favor digite seu Genero!"),
-  dataNacimento: Yup.string().required("Por favor digite o ano de nascimento!"),
+  color: Yup.string().required("Por favor escolha uma cor do seu gosto!"),
+  maritalStatus: Yup.string().required("Por favor digite seu Estado Civil!"),
+  genre: Yup.string().required("Por favor digite seu Genero!"),
+  birthDay: Yup.string().required("Por favor digite o ano de nascimento!"),
   phone: Yup.string().required("Por favor digite seu numero!"),
 });
 
@@ -23,23 +23,23 @@ const validationSchema = Yup.object().shape({
   {({ handleSubmit, handleChange, values, errors }) => (
     <form onSubmit={handleSubmit}>
       <Form.Item
-        name="nome"
-        label="Nome"
-        help={errors.nome}
-        validateStatus={errors.nome ? "error" : ""}
+        name="name"
+        label="name"
+        help={errors.name}
+        validateStatus={errors.name ? "error" : ""}
       >
-        <Input name="nome" onChange={handleChange} value={values.nome} />
+        <Input name="name" onChange={handleChange} value={values.name} />
       </Form.Item>
       <Form.Item
-        name="sobrenome"
-        label="Sobrenome"
-        help={errors.sobrenome}
-        validateStatus={errors.sobrenome ? "error" : ""}
+        name="lastName"
+        label="lastName"
+        help={errors.lastName}
+        validateStatus={errors.lastName ? "error" : ""}
       >
         <Input
-          name="sobrenome"
+          name="lastName"
           onChange={handleChange}
-          value={values.sobrenome}
+          value={values.lastName}
         />
       </Form.Item>
 
@@ -62,30 +62,30 @@ const validationSchema = Yup.object().shape({
       </Form.Item>
 
       <Form.Item
-        name="cor"
-        label="Cor Preferida"
-        help={errors.cor}
-        validateStatus={errors.cor ? "error" : ""}
+        name="color"
+        label="color Preferida"
+        help={errors.color}
+        validateStatus={errors.color ? "error" : ""}
       >
         <Input
           type="color"
           className="imput-cor"
-          name="cor"
+          name="color"
           onChange={handleChange}
-          value={values.cor}
+          value={values.color}
         />
       </Form.Item>
 
       <Form.Item
-        name="estadoCivil"
+        name="maritalStatus"
         label="Estado Civil"
-        help={errors.estadoCivil}
-        validateStatus={errors.estadoCivil ? "error" : ""}
+        help={errors.maritalStatus}
+        validateStatus={errors.maritalStatus ? "error" : ""}
       >
         <Select
-          name="estadoCivil"
+          name="maritalStatus"
           onChange={handleChange}
-          value={values.estadoCivil}
+          value={values.maritalStatus}
         >
           <Option value="solteiro">Solteiro</Option>
           <Option value="casado">Casado</Option>
@@ -94,10 +94,10 @@ const validationSchema = Yup.object().shape({
       </Form.Item>
 
       <Form.Item
-        name="genero"
-        label="Genero"
-        help={errors.genero}
-        validateStatus={errors.genero ? "error" : ""}
+        name="genre"
+        label="genre"
+        help={errors.genre}
+        validateStatus={errors.genre ? "error" : ""}
       ></Form.Item>
     </form>
   )}

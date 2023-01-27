@@ -30,30 +30,30 @@ const DadosGerais = ({ formik }) => {
     <div className="App">
       <form onSubmit={formik.handleSubmit} key={formik.values}>
         <Form.Item
-          key={formik.errors.nome}
-          name="nome"
+          key={formik.errors.name}
+          name="name"
           label="Nome"
           help={formik.errors.values}
-          validateStatus={formik.errors.nome ? "error" : ""}
-          initialValue={formik.values.nome}
+          validateStatus={formik.errors.name ? "error" : ""}
+          initialValue={formik.values.name}
         >
           <Input
-            defaultValue={formik.values.nome}
-            name="nome"
+            defaultValue={formik.values.name}
+            name="name"
             onChange={formik.handleChange}
           />
         </Form.Item>
         <Form.Item
-          key={formik.errors.sobrenome}
-          name="sobrenome"
+          key={formik.errors.lastName}
+          name="lastName"
           label="Sobrenome"
-          help={formik.errors.sobrenome}
-          validateStatus={formik.errors.sobrenome ? "error" : ""}
-          initialValue={formik.values.nome}
+          help={formik.errors.lastName}
+          validateStatus={formik.errors.lastName ? "error" : ""}
+          initialValue={formik.values.lastName}
         >
           <Input
-            defaultValue={formik.values.sobrenome}
-            name="sobrenome"
+            defaultValue={formik.values.lastName}
+            name="lastName"
             onChange={formik.handleChange}
           />
         </Form.Item>
@@ -74,7 +74,7 @@ const DadosGerais = ({ formik }) => {
         </Form.Item>
 
         <Form.Item
-          key={formik.errors.nome}
+          key={formik.errors.cpf}
           name="cpf"
           label="CPF"
           help={formik.errors.cpf}
@@ -89,36 +89,36 @@ const DadosGerais = ({ formik }) => {
         </Form.Item>
 
         <Form.Item
-          key={formik.errors.cor}
-          name="cor"
-          label="Cor Preferida"
-          help={formik.errors.cor}
-          validateStatus={formik.errors.cor ? "error" : ""}
-          initialValue={formik.values.cor}
+          key={formik.errors.color}
+          name="color"
+          label="color Preferida"
+          help={formik.errors.color}
+          validateStatus={formik.errors.color ? "error" : ""}
+          initialValue={formik.values.color}
         >
           <Input
             type="color"
             className="imput-cor"
-            name="cor"
+            name="color"
             onChange={formik.handleChange}
-            defaultValue={formik.values.cor}
+            defaultValue={formik.values.color}
           />
         </Form.Item>
 
         <Form.Item
-          key={formik.errors.estadoCivil}
-          name="estadoCivil"
+          key={formik.errors.maritalStatus}
+          name="maritalStatus"
           label="Estado Civil"
-          help={formik.errors.estadoCivil}
-          validateStatus={formik.errors.estadoCivil ? "error" : ""}
-          initialValue={formik.values.estadoCivil}
+          help={formik.errors.maritalStatus}
+          validateStatus={formik.errors.maritalStatus ? "error" : ""}
+          initialValue={formik.values.maritalStatus}
         >
           <Select
-          defaultValue={formik.values.genero}
-            name="estadoCivil"
+          defaultValue={formik.values.maritalStatus}
+            name="maritalStatus"
             onChange={(value) =>
               formik.handleChange({
-                target: { name: "estadoCivil", value },
+                target: { name: "maritalStatus", value },
               })
             }
             onBlur={formik.handleBlur}
@@ -132,19 +132,19 @@ const DadosGerais = ({ formik }) => {
         </Form.Item>
 
         <Form.Item
-          key={formik.errors.genero}
-          name="genero"
+          key={formik.errors.genre}
+          name="genre"
           handleChange
           label="Genero"
-          help={formik.errors.genero}
-          validateStatus={formik.errors.genero ? "error" : ""}
-          initialValue={formik.values.genero}
+          help={formik.errors.genre}
+          validateStatus={formik.errors.genre ? "error" : ""}
+          initialValue={formik.values.genre}
         >
           <Select
-          defaultValue={formik.values.genero}
-            name="genero"
+          defaultValue={formik.values.genre}
+            name="genre"
             onChange={(value) =>
-              formik.handleChange({ target: { name: "genero", value } })
+              formik.handleChange({ target: { name: "genre", value } })
             }
             onBlur={formik.handleBlur}
           >
@@ -157,18 +157,18 @@ const DadosGerais = ({ formik }) => {
         </Form.Item>
 
         <Form.Item
-          key={formik.errors.dataNacimento}
-          name="dataNacimento"
+          key={formik.errors.birthDay}
+          name="birthDay"
           label="Data de Nascimento"
-          help={formik.errors.dataNacimento}
-          validateStatus={formik.errors.dataNacimento ? "error" : ""}
-          initialValue={formik.values.dataNacimento}
+          help={formik.errors.birthDay}
+          validateStatus={formik.errors.birthDay ? "error" : ""}
+          initialValue={formik.values.birthDay}
         >
           <DatePicker
-            name="dataNacimento"
+            name="birthDay"
             onChange={(date, dateString) =>
               formik.handleChange({
-                target: { name: "dataNacimento", value: dateString },
+                target: { name: "birthDay", value: dateString },
               })
             }
           />
