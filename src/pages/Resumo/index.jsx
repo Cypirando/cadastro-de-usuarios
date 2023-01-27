@@ -11,20 +11,20 @@ const Resumo = ({ formik, user }) => {
       <div>
         <Descriptions title="Informações do Usuario">
           <Descriptions.Item label="Nome Completo">
-            {dataSource.nome} {dataSource.sobrenome}
+            {dataSource.name} {dataSource.lastName}
           </Descriptions.Item>
           <Descriptions.Item label="Cpf">{dataSource.cpf}</Descriptions.Item>
           <Descriptions.Item label="Estadi Civil">
-            {dataSource.estadoCivil}
+            {dataSource.maritalStatus}
           </Descriptions.Item>
           <Descriptions.Item label="Email">
             {dataSource.email}
           </Descriptions.Item>
           <Descriptions.Item label="Gênero">
-            {dataSource.genero}
+            {dataSource.genre}
           </Descriptions.Item>
           <Descriptions.Item label="Data de Nascimento">
-            {dataSource.dataNacimento}
+            {dataSource.birthDay}
           </Descriptions.Item>
           <Descriptions.Item label="Telefone">
             {dataSource.phone}
@@ -32,11 +32,9 @@ const Resumo = ({ formik, user }) => {
           <Descriptions.Item label="Telefone 2">
             {dataSource.phone2}
           </Descriptions.Item>
-          <Descriptions.Item label="Hobbies">
-            {dataSource.hobbies.join(", ")}
-          </Descriptions.Item>
+         
           <Space size={[0, 8]} wrap>
-            <Tag color={dataSource.cor}>Cor</Tag>
+            <Tag color={dataSource.color}>Cor</Tag>
           </Space>
         </Descriptions>
       </div>
