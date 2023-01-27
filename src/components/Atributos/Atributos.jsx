@@ -44,3 +44,5 @@ const Atributos = estiloDeVida.reduce((acc, interesse) => {
 
 
 export default Atributos;
+
+

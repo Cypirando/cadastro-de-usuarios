@@ -41,6 +41,7 @@ const App = () => {
     dataNacimento: "",
     phone: "",
     phone2: "",
+    hobbies:[],
   }); 
 
   const formik = useFormik({
@@ -50,7 +51,7 @@ const App = () => {
     initialValues: user,
 
     onSubmit: (values) => {
-      console.log(values, "values submit");
+      // console.log(values, "values submit");
     },
   });
 
@@ -93,9 +94,9 @@ const App = () => {
 
   return (
     <>
-      <Steps current={current} items={items} user={user} />
+      <Steps current={current} items={items} />
       <div style={contentStyle}>
-        <Component formik={formik} />
+        <Component formik={formik} user={user}  setUser={setUser}/>
       </div>
       <div
         style={{

@@ -1,33 +1,24 @@
 import { Checkbox, Table } from "antd";
-import { useEffect, useState } from "react";
 import Atributos from "../../components/Atributos/Atributos";
-const Interesses = ({ formik }) => {
+const Interesses = ({ formik, user, setUser }) => {
   const dataSource = Object.values(Atributos);
-  const [selectedInteresses, setSelectedInteresses] = useState(
-    JSON.parse(localStorage.getItem("selectedInteresses")) || []
-  );
 
-  const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
-    if (checked) {
-      setSelectedInteresses([...selectedInteresses, name]);
+  const handleCheckboxChange = (e) => {
+    const value = e.target.name;
+    let newUser = { ...user };
+    if (e.target.checked) {
+      newUser.hobbies = [...newUser.hobbies, value];
+      setUser(newUser);
+      formik.setFieldValue("hobbies", newUser.hobbies);
     } else {
-      setSelectedInteresses(selectedInteresses.filter((i) => i !== name));
+      newUser.hobbies = newUser.hobbies.filter((hobby) => hobby !== value);
+      setUser(newUser);
+      formik.setFieldValue("hobbies", newUser.hobbies);
     }
   };
 
-  useEffect(() => {
-    if (selectedInteresses) {
-      localStorage.setItem(
-        "selectedInteresses",
-        JSON.stringify(selectedInteresses)
-      );
-    }
-    const storedInteresses = localStorage.getItem("selectedInteresses");
-    if (storedInteresses) {
-      setSelectedInteresses(JSON.parse(storedInteresses));
-    }
-  }, [selectedInteresses]);
+  console.log(user, "formik");
+  console.log(formik.values, "Values");
 
   const columns = [
     {
@@ -46,7 +37,7 @@ const Interesses = ({ formik }) => {
               key={index}
               name={child.label}
               onChange={handleCheckboxChange}
-              checked={selectedInteresses.includes(child.label)}
+              checked={user.hobbies.includes(child.label)}
             >
               {child.label}
             </Checkbox>
