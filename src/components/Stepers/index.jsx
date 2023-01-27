@@ -41,7 +41,7 @@ const App = () => {
     dataNacimento: "",
     phone: "",
     phone2: "",
-  });
+  }); 
 
   const formik = useFormik({
     validationSchema: schema,
@@ -90,7 +90,6 @@ const App = () => {
     marginTop: 16,
   };
   const Component = steps[current].content;
-  console.log(formik.values, "Formik");
 
   return (
     <>

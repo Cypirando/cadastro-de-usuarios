@@ -11,7 +11,9 @@ const Resumo = ({formik}) => {
           </tr>
         </thead>
         <tbody>
-          {formik.values.nome}
+          {formik.values.nome} 
+          {formik.values.sobrenome}
+
         </tbody>
       </table>
     </div>
