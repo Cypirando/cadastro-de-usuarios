@@ -4,7 +4,6 @@ import Atributos from "../../components/Atributos/Atributos";
 const Interesses = () => {
   const dataSource = Object.values(Atributos);
   const [selectedInteresses, setSelectedInteresses] = useState([]);
-  console.log(dataSource, "Atributos");
 
 
   const handleCheckboxChange = (event) => {

@@ -33,16 +33,8 @@ const Atributos =  estiloDeVida.reduce((acc, interesse) => {
     acc[interesse.group].children.push(interesse.name);
     return acc;
   }, {});
-console.log(Atributos);
 
 
-// const result = estiloDeVida
-//   .filter(item => item.group === group)
-//   .map(item => ({ id: item.id, group: item.group, name: item.name }))
-//   .reduce((obj, item) => {
-//     obj.id.push(item.id);
-//     obj.name.push(item.name);
-//     return obj;
-//   }, { id: [], group, name: [] });
-// console.log(result);
+
+
 export default Atributos;

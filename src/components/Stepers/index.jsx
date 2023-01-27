@@ -42,7 +42,6 @@ const App = () => {
     phone2: "",
     atributos: " dataSource.map((item) => console.log(item.group))",
   });
-  // console.log(setUser);
 
   // const handleInputChange = (event) => {
   //   const { name, value } = event.target;
@@ -56,11 +55,11 @@ const App = () => {
     initialValues: user,
 
     onSubmit: (values) => {
-      // console.log(values, "values submit");
-      // Your logic here
+      console.log(values, "values submit");
+
     },
   });
-  console.log(formik.values, "formik");
+
 
   const steps = [
     {
