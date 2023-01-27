@@ -5,15 +5,23 @@ const Interesses = ({ formik }) => {
   const dataSource = Object.values(Atributos);
   const [selectedInteresses, setSelectedInteresses] = useState([]);
 
-  const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
-    if (checked) {
-        setSelectedInteresses([...selectedInteresses, name]);
-    } else {
-        setSelectedInteresses(selectedInteresses.filter((i) => i !== name));
-    }
-    formik.setFieldValue("hoobies", selectedInteresses);
+
+const handleCheckboxChange = (event) => {
+  const { name, checked } = event.target;
+  if (checked) {
+      setSelectedInteresses([...selectedInteresses, name]);
+  } else {
+      setSelectedInteresses(selectedInteresses.filter((i) => i !== name));
+  }
+  localStorage.setItem("selectedInteresses", JSON.stringify(selectedInteresses));
 };
+
+useEffect(() => {
+  const storedInteresses = localStorage.getItem("selectedInteresses");
+  if (storedInteresses) {
+      setSelectedInteresses(JSON.parse(storedInteresses));
+  }
+}, []);
 
   const columns = [
     {
@@ -28,12 +36,11 @@ const Interesses = ({ formik }) => {
       render: (children) => (
         <>
           {children.map((child, index) => (
-            <Checkbox
-              defaultChecked={formik.values.hobbies}
+            <Checkbox 
               key={index}
-              name={child}
+              name={child.label}
               onChange={handleCheckboxChange}
-              checked={selectedInteresses.includes(child)}
+              checked={selectedInteresses.includes(child.label)}
             >
               {child.label}
             </Checkbox>
